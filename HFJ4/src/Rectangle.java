@@ -1,16 +1,21 @@
 import java.util.ArrayList;
 
-/**
- * Created by Chandni on 4/5/15.
- */
 
 public class Rectangle {
-    public double height;
-    public double width;
+    private double height;
+    private double width;
 
     public Rectangle(double height, double width) {
         this.height = height;
         this.width = width;
+    }
+
+    public double getHeight(){
+        return height;
+    }
+
+    public double getWidth(){
+        return width;
     }
 
     public double area() {
@@ -22,24 +27,24 @@ public class Rectangle {
     }
 
     public static ArrayList<Rectangle> fillArray(ArrayList<Rectangle> rectangles, int desiredSize) {
-        for(int i = 0; i < desiredSize; i++){
-            rectangles.add(new Rectangle((i + 1)*Math.random(), (i + 1)*Math.random()));
+        for(int numberOfRectangles = 0; numberOfRectangles < desiredSize; numberOfRectangles++){
+            rectangles.add(new Rectangle((numberOfRectangles + 1)*Math.random(), (numberOfRectangles + 1)*Math.random()));
         }
         return rectangles;
     }
 
     public static double averageArea(ArrayList<Rectangle> rectangles) {
         double totalArea = 0.0;
-        for (Rectangle r : rectangles){
-            totalArea += r.area();
+        for (Rectangle rectangle : rectangles){
+            totalArea += rectangle.area();
         }
         return  totalArea/rectangles.size();
     }
 
     public static double totalPerimeter(ArrayList<Rectangle> rectangles) {
         double total = 0.0;
-        for(Rectangle r : rectangles){
-            total += r.perimeter();
+        for(Rectangle rectangle : rectangles){
+            total += rectangle.perimeter();
         }
         return total;
     }

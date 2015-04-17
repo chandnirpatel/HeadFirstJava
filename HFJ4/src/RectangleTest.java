@@ -2,14 +2,11 @@ import junit.framework.TestCase;
 
 import java.util.ArrayList;
 
-/**
- * Created by Chandni on 4/5/15.
- */
 public class RectangleTest extends TestCase {
     public void testRectLengthAndWidth(){
         Rectangle rectangle = new Rectangle(1, 2);
-        assertEquals(1.0, rectangle.height);
-        assertEquals(2.0, rectangle.width);
+        assertEquals(1.0, rectangle.getHeight());
+        assertEquals(2.0, rectangle.getWidth());
     }
 
     public void testRectangleArea(){
