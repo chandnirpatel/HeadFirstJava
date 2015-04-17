@@ -18,10 +18,4 @@ public class Calc {
         return sum;
     }
 
-    public int sumClosedForm() {
-        int sumOfPair = (1 + 99); // a(first) + a(last) = 100, a(second) + a(second to last) = 100  and so on ...
-        int numOfPairs = 100/4; //There would normally be n/2 pairs if sum even and odds. n/4 sums if we only use odd pairs.
-        int sum = sumOfPair * numOfPairs;
-        return sum;
-    }
 }
