@@ -44,7 +44,7 @@ public class GuessNumberGame extends Game{
     }
 
     private void displayVictory() {
-        String tries = " tires.";
+        String tries = " tries.";
         if (guessCount == 1) tries = " try.";
         printStream.println("Excellent job, you guessed the number I was thinking of.  It took you " + guessCount + tries);
     }
