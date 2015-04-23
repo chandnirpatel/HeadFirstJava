@@ -1,39 +1,58 @@
-/**
- * Created by Chandni on 4/5/15.
- */
 
-public class GuessNumberGame {
-    int target;
-    int guess;
-    public int guessCount = 0;
-    boolean correctGuess = false;
-    GameHelper helper = new GameHelper();
+public class GuessNumberGame extends Game{
+    private int target;
+    private int guess;
+    private int guessCount = 0;
+    private boolean correctGuess = false;
 
-    public void playGame() {
+    protected void newGame(){
         setTarget();
-        while (!correctGuess) {
-            getguess();
-            guessCount++;
-            checkGuess();
-        }
+        guess = 0;
+        guessCount = 0;
+        correctGuess = false;
     }
 
-    public int setTarget() {
+    protected void playGame(){
+        while (!correctGuess) {
+            playOneRound();
+        }
+        displayVictory();
+    }
+
+    private void playOneRound() {
+            guessFromUser();
+            guessCount++;
+            checkGuess();
+    }
+
+    private void setTarget() {
         target = (int) (Math.random()* 100 + 0.5);
-        return target;
+    }
+
+    private void guessFromUser() {
+        guess = Integer.parseInt(readUserInput.getUserInput("What's your best guess?"));
     }
 
     private void checkGuess() {
         if (guess == target) {
             correctGuess = true;
         } else if (guess > target) {
-            System.out.println("Your guess is greater than what I had in mind. Guess again.");
+            printStream.println("You guessed too high. Guess again.");
         } else {
-            System.out.println("Your guess is less than what I had in mind. Guess again.");
+            printStream.println("You guessed too low. Guess again.");
         }
     }
 
-    public void getguess() {
-        guess = Integer.parseInt(helper.getUserInput("What's your best guess?"));
+    private void displayVictory() {
+        String tries = " tires.";
+        if (guessCount == 1) tries = " try.";
+        printStream.println("Excellent job, you guessed the number I was thinking of.  It took you " + guessCount + tries);
+    }
+
+    protected void displayInstructions(){
+        super.displayInstructions();
+        printStream.println("I'm thinking of an integer between 1 and 100.");
+        printStream.println("Guess the number I'm thinking of.");
+        printStream.println("If you're right, you win! If not, I'll tell you if you guessed too high or low.");
     }
 }
